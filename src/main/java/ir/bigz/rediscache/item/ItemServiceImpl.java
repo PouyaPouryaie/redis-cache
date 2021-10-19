@@ -18,8 +18,9 @@ public class ItemServiceImpl implements ItemService{
 
     @Override
     @Cacheable(value = "itemCache", key = "#itemId")
-    public Item getItemById(Long itemId) {
-        return itemRepository.getById(itemId);
+    public Item getItemById(long itemId) {
+        Item item = itemRepository.getById(itemId);
+        return item;
     }
 
     @Override
@@ -30,7 +31,7 @@ public class ItemServiceImpl implements ItemService{
 
     @Override
     @CachePut(value="itemCache", key="#itemId")
-    public Item updateItem(Item item, Long itemId) {
+    public Item updateItem(Item item, long itemId) {
         Optional<Item> itemById = itemRepository.findById(itemId);
         if(itemById.isPresent()){
             Item itemFind = itemById.get();
@@ -46,7 +47,7 @@ public class ItemServiceImpl implements ItemService{
 
     @Override
     @CacheEvict(value="itemCache", key="#itemId")
-    public void deleteItemById(Long itemId) {
+    public void deleteItemById(long itemId) {
         itemRepository.deleteById(itemId);
     }
 }

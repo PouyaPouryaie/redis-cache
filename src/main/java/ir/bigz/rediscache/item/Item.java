@@ -1,30 +1,30 @@
 package ir.bigz.rediscache.item;
 
+
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-@Data
 @Entity
 @Table(name = "Item")
-@ToString
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@Builder
 public class Item implements Serializable {
 
-    private static final long serialVersionUID = 123456L;
+    private static final long serialVersionUID=1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    @GeneratedValue
+    private long id;
     @Version
-    private Integer version;
+    private int version;
     private Timestamp createDate;
     private String name;
-    private Long quantity;
+    private long quantity;
 }

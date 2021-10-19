@@ -13,7 +13,7 @@ public class ItemController {
     private final ItemService itemService;
 
     @GetMapping("/{itemId}")
-    public ResponseEntity<?> getItemById(@PathVariable Long itemId) {
+    public ResponseEntity<?> getItemById(@PathVariable long itemId) {
         try {
             Item item = itemService.getItemById(itemId);
             return new ResponseEntity<>(item, HttpStatus.OK);
@@ -33,7 +33,7 @@ public class ItemController {
     }
 
     @PostMapping("/{itemId}")
-    public ResponseEntity<?> updateItem(@PathVariable Long itemId, @RequestBody Item item) {
+    public ResponseEntity<?> updateItem(@PathVariable long itemId, @RequestBody Item item) {
         try {
             Item itemResult = itemService.updateItem(item, itemId);
             return new ResponseEntity<>(itemResult, HttpStatus.OK);
@@ -43,7 +43,7 @@ public class ItemController {
     }
 
     @PostMapping("/delete/{itemId}")
-    public ResponseEntity<?> deleteItem(@PathVariable Long itemId) {
+    public ResponseEntity<?> deleteItem(@PathVariable long itemId) {
         try {
             itemService.deleteItemById(itemId);
             return new ResponseEntity<>(HttpStatus.OK);

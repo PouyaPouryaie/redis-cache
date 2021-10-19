@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 @Service
 public interface ItemService {
 
-    Item getItemById(Long itemId);
+    Item getItemById(long itemId);
     Item saveItem(Item item);
-    Item updateItem(Item item, Long itemId);
-    void deleteItemById(Long itemId);
+    Item updateItem(Item item, long itemId);
+    void deleteItemById(long itemId);
 }
