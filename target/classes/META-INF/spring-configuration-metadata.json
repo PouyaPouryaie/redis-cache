@@ -1,0 +1,22 @@
+{
+  "groups": [
+    {
+      "name": "spring.redis",
+      "type": "ir.bigz.rediscache.global.RedisProperties",
+      "sourceType": "ir.bigz.rediscache.global.RedisProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.redis.host",
+      "type": "java.lang.String",
+      "sourceType": "ir.bigz.rediscache.global.RedisProperties"
+    },
+    {
+      "name": "spring.redis.port",
+      "type": "java.lang.Integer",
+      "sourceType": "ir.bigz.rediscache.global.RedisProperties"
+    }
+  ],
+  "hints": []
+}
