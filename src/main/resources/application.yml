@@ -13,8 +13,6 @@ spring:
     port: 6379
   cache:
     type: redis
-    redis:
-      cache-null-values: true
   jpa:
     generate-ddl: true
     hibernate:

@@ -1,12 +1,10 @@
 package ir.bigz.rediscache.global;
 
 import org.springframework.boot.autoconfigure.cache.RedisCacheManagerBuilderCustomizer;
-import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
-import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
@@ -14,11 +12,12 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 
 import java.time.Duration;
-import java.util.HashMap;
-import java.util.Map;
-
 
 import static org.springframework.data.redis.serializer.RedisSerializationContext.SerializationPair;
+
+/**
+ * 2 ways for config spring cache use redis
+ */
 
 @EnableCaching
 @Configuration
@@ -46,32 +45,20 @@ public class CacheConfig {
         return redisTemplate;
     }
 
-
-//    @Bean(name="cacheManager")
-//    public RedisCacheManager cacheManager(RedisConnectionFactory redisConnectionFactory){
-//
-//        Map<String, RedisCacheConfiguration> cacheConfigurations = new HashMap<>();
-//        cacheConfigurations.put("base_info", cacheConfiguration());
-//        cacheConfigurations.put("ready_info", cacheConfiguration());
-//
-//        return RedisCacheManager.RedisCacheManagerBuilder.fromConnectionFactory(redisConnectionFactory)
-//                .withInitialCacheConfigurations(cacheConfigurations).build();
-//    }
-
 //    @Bean
 //    public RedisCacheManagerBuilderCustomizer redisCacheManagerBuilderCustomizer() {
 //        return (builder) -> builder
 //                .withCacheConfiguration("itemCache",
-//                        RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofMinutes(10)))
+//                        RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofMinutes(2)))
 //                .withCacheConfiguration("customerCache",
-//                        RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofMinutes(5)));
+//                        RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofMinutes(7)));
 //    }
-
-    @Bean
-    public RedisCacheConfiguration cacheConfiguration() {
-        return RedisCacheConfiguration.defaultCacheConfig()
-                .entryTtl(Duration.ofMinutes(60));
+//
+//    @Bean
+//    public RedisCacheConfiguration cacheConfiguration() {
+//        return RedisCacheConfiguration.defaultCacheConfig()
+//                .entryTtl(Duration.ofMinutes(5))
 //                .disableCachingNullValues()
 //                .serializeValuesWith(SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer()));
-    }
+//    }
 }
